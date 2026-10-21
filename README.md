@@ -8,6 +8,7 @@ SGLang 源码分析系列的可视化图表（单文件、可交互的 HTML）�
 | :--- | :--- | :--- |
 | [`index.html`](index.html) | SGLang 请求生命周期全景：三条流，一张图 | 对应《SGLang 请求生命周期与 Prefill / Decode 源码分析》第 1.1 节，泳道图：客户端 → 主进程（HTTP Server + TokenizerManager）→ Scheduler 子进程（每 rank 一个）→ Detokenizer 进程，控制流 ① → ⑨ |
 | [`kv-alloc-workflow/index.html`](kv-alloc-workflow/index.html) | KV Cache 分配与回收全流程 | 对应《KV Cache 内存机制与显存容量》第 4 章：启动期静态分配 → 准入（两道账本）→ Prefill 分配 → Decode 循环（驱逐 / 回退）→ 结束回收，工作流图 |
+| [`admission-flow/index.html`](admission-flow/index.html) | KV 预算准入：单条请求的判定主线 | 对应《KV Cache 内存机制与显存容量》4.2.1 节：waiting_queue 逐条交给 PrefillAdder.add_one_req，三道关口（KV 账本、不分块上限、分块截取）、接受即扣账、budget_state() 判定，工作流图 |
 
 图由 [Archify](https://github.com/tt-a1i/archify) 生成，自包含单文件（字体与图标已内嵌，无外部依赖），支持：
 
